@@ -2,7 +2,7 @@
   <h4>商品列表</h4>
   <div class="flex">
     <% @products.each do |product| %>
-      <div class="panel panel-default">
+      <div class="panel panel-default" id="pid-<%= product.id %>">
         <div class="panel-heading">
           <h3 class="panel-title"><%= product.name %></h3>
         </div>
@@ -10,11 +10,24 @@
           <p class="product-price">價錢 <%= product.price %></p>
           <small class="product-inventory">庫存 <%= product.inventory %></small>
         </div>
-        <% if product.inventory > 0 %>
-          <button type="button" class="btn btn-default add-to-cart">加入購物車</button>
-        <% else %>
-          <button type="button" class="btn btn-default add-to-cart" disabled>QQ我沒了</button>
-        <% end %>
+        <div class="flex add-to-cart">
+          <div class="col-lg-6">
+            <div class="input-group quantity-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default minus" type="button" onclick="minusQuantity('<%= product.id %>')">-</button>
+              </span>
+              <input type="text" class="form-control quantity text-center" value=1 onblur="checkQuantity('<%= product.id %>', '<%= product.inventory %>')">
+              <span class="input-group-btn">
+                <button class="btn btn-default plus" type="button" onclick="plusQuantity('<%= product.id %>', '<%= product.inventory %>')">+</button>
+              </span>
+            </div>
+          </div>
+          <% if product.inventory.positive? %>
+            <button type="button" class="btn btn-default btn-add-to-cart" onclick="addToCart('<%= product.id %>')">加入購物車</button>
+          <% else %>
+            <button type="button" class="btn btn-default btn-add-to-cart" disabled>QQ我沒了</button>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

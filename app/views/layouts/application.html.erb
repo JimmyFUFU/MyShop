@@ -3,9 +3,10 @@
   <head>
     <title>ShoplineCart</title>
     <%= csrf_meta_tags %>
-
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
   </head>
   <body>
     <div class="container">
@@ -20,6 +21,7 @@
             <ul class="nav navbar-nav navbar-right">
               <% if current_user %>
                 <li><a><%= current_user.email %></a></li>
+                <li><a href='/carts'>購物車</a></li>
                 <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
               <% else %>
                 <li><%= link_to('註冊', new_registration_path(:user)) %></li>
@@ -29,21 +31,15 @@
           </div>
         </div>
       </nav>
-      <div class="alert alert-success" role="alert"><%= notice %></div>
-      <div class="alert alert-warning" role="alert"><%= alert %></div>
       <%= yield %>
     </div>
   </body>
   <script type="text/javascript">
-    if ($('.alert-success').text()) {
-      $('.alert-success').show();
-    } else {
-      $('.alert-success').hide();
+    if ('<%= notice %>') {
+      alertify.success('<%= notice %>');  
     }
-    if ($('.alert-warning').text()) {
-      $('.alert-warning').show();
-    } else {
-      $('.alert-warning').hide();
+    if ('<%= alert %>') {
+      alertify.error('<%= alert %>');  
     }
   </script>
 </html>

@@ -3,7 +3,8 @@
 }
 
 .add-to-cart {
-  position: relative;
-  left: 176px;
-  bottom: 10px;
+  margin: 0 3% 3% 3%;
+  .quantity-group {
+    width: 110px;
+  }
 }

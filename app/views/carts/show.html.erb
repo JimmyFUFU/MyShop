@@ -1,0 +1,22 @@
+<div class="cart">
+  <h4>購物車</h4>
+  <table class="table">
+    <tr>
+      <td class="active">商品名稱</td>
+      <td class="active">數量</td>
+      <td class="active">金額</td>
+      <td class="active">小計</td>
+      <td class="active"></td>
+    </tr>
+    <% current_cart_items.each do |item| %>
+      <tr id="item_<%= item['id']%>">
+        <td class="active"><%= item['name']%></td>
+        <td class="active"><%= item['price'] %></td>
+        <td class="active"><%= item['quantity'] %></td>
+        <td class="active subtotal"><%= item['price'] * item['quantity'] %></td>
+        <td class="active text-right remove-item" onclick="removeItem('<%= item['id'] %>')">移除</td>
+      </tr>
+    <% end %> 
+  </table>
+  <span>總金額 <span id="total-price"><%= current_cart.total_price %></span></span>
+</div>
