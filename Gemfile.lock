@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 425581295d59839e1c4c19a0f4482886d1e9f373
+  branch: master
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,6 +49,7 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
+    awesome_print (1.9.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootstrap-sass (3.4.1)
@@ -177,10 +186,12 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  awesome_print (~> 1.8)
   bootstrap-sass
   byebug
   coffee-rails (~> 4.2)
   devise (~> 4.2)
+  faker!
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

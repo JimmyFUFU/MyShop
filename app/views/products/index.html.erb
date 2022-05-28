@@ -1,0 +1,21 @@
+<div class="products">
+  <h4>商品列表</h4>
+  <div class="flex">
+    <% @products.each do |product| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= product.name %></h3>
+        </div>
+        <div class="panel-body">
+          <p class="product-price">價錢 <%= product.price %></p>
+          <small class="product-inventory">庫存 <%= product.inventory %></small>
+        </div>
+        <% if product.inventory > 0 %>
+          <button type="button" class="btn btn-default add-to-cart">加入購物車</button>
+        <% else %>
+          <button type="button" class="btn btn-default add-to-cart" disabled>QQ我沒了</button>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
