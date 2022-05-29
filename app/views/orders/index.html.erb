@@ -1,0 +1,18 @@
+<div class="orders">
+  <h4>訂單列表</h4>
+  <table class="table">
+    <tr>
+      <td class="active">訂單名稱</td>
+      <td class="active">總金額</td>
+      <td class="active">成立時間</td>
+    </tr>
+    <% @orders.each do |order| %>
+        <tr>
+          <td class="active"><a href="/orders/<%= order.token%>"><%= order.name%></a></td>
+          <td class="active"><%= order.total_price %></td>
+          <td class="active"><%= order.created_at.strftime('%Y-%m-%d %H:%m:%S') %></td>
+        </tr>
+      </a>
+    <% end %> 
+  </table>
+</div>

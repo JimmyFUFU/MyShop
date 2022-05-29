@@ -1,0 +1,21 @@
+<div class="order">
+  <h4>訂單 <%= @order.name %></h4>
+  <small>成立時間 <%= @order.created_at.strftime('%Y-%m-%d %H:%m:%S') %></small>
+  <table class="table">
+    <tr>
+      <td class="active">商品名稱</td>
+      <td class="active">數量</td>
+      <td class="active">金額</td>
+      <td class="active">小計</td>
+    </tr>
+    <% @order.order_items.each do |item| %>
+      <tr>
+        <td class="active"><%= item.name %></td>
+        <td class="active"><%= item.price %></td>
+        <td class="active"><%= item.quantity %></td>
+        <td class="active"><%= item.price * item.quantity %></td>
+      </tr>
+    <% end %> 
+  </table>
+  <span>總金額 <%= @order.total_price %></span>
+</div>

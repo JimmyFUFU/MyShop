@@ -28,3 +28,15 @@ function cartReload() {
     }
   })
 }
+
+function checkout() {
+  $.ajax({
+    type: 'POST',
+    contentType: 'application/json',
+    url: `/orders.json`,
+    success: function() {},
+    error: function(data) {
+      alertify.error(data.responseJSON?.error);  
+    }
+  })
+}

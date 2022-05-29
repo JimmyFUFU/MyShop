@@ -18,5 +18,8 @@
       </tr>
     <% end %> 
   </table>
-  <span>總金額 <span id="total-price"><%= current_cart.total_price %></span></span>
+  <div class="flex">
+    <span>總金額 <span id="total-price"><%= current_cart.total_price %></span></span>
+    <button class="btn btn-default text-left" type="button" onclick="checkout()">立即結帳</button>
+  </div>
 </div>

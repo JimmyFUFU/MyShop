@@ -1,3 +1,5 @@
+require './lib/exceptions/inventory_errors'
+
 class Cart < ApplicationRecord
   belongs_to :user
 

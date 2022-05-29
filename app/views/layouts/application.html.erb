@@ -22,6 +22,7 @@
               <% if current_user %>
                 <li><a><%= current_user.email %></a></li>
                 <li><a href='/carts'>購物車</a></li>
+                <li><a href='/orders'>我的訂單</a></li>
                 <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
               <% else %>
                 <li><%= link_to('註冊', new_registration_path(:user)) %></li>

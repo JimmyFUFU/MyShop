@@ -13,4 +13,11 @@ Rails.application.routes.draw do
     post '/item', to: 'carts#add_item'
     delete '/item', to: 'carts#remove_item'
   end
+
+  # Order
+  resources :orders, only: %i[index create] do
+    collection do
+      get '/:token', to: 'orders#show', as: :show
+    end
+  end
 end
