@@ -3,7 +3,7 @@ function removeItem(pid) {
     type: 'DELETE',
     data: JSON.stringify({ product_id: pid }),
     contentType: 'application/json',
-    url: `/cart/item.json`,
+    url: '/cart/item.json',
     success: function(data) {
       $(`#item_${pid}`).hide();
       alertify.success(data.message);
