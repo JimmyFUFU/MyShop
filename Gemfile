@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise', '~> 4.2'
 
+gem 'sassc', '~> 2.1.0'
+
 gem 'bootstrap-sass'
 
 gem 'awesome_print', '~> 1.8'
