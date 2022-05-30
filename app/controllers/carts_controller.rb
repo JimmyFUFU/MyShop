@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  prepend_before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def show
     respond_to do |format|
