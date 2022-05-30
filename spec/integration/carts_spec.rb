@@ -1,7 +1,10 @@
 require './spec/swagger_helper'
 
-describe('Cart API') do
+describe 'Cart API', skip_forgery_protection: true do
   include Warden::Test::Helpers
+
+  # for rswag CSRFToken security
+  let(:Authorization) {}
 
   let(:user) { FactoryBot.create(:user) }
   let(:product) { FactoryBot.create(:product) }
@@ -24,6 +27,7 @@ describe('Cart API') do
     get 'show cart' do
       tags 'Cart'
       consumes 'application/json'
+      security [CSRFToken: []]
 
       response '200', 'Get cart content' do
         examples 'application/json': {
@@ -62,6 +66,7 @@ describe('Cart API') do
     get 'show cart' do
       tags 'Cart'
       consumes 'application/json'
+      security [CSRFToken: []]
       parameter in: :path, name: 'cart_token', type: :string, required: true, description: 'Cart Token.'
 
       response '200', 'Get cart content' do
@@ -126,6 +131,7 @@ describe('Cart API') do
     post 'add product to cart' do
       tags 'Cart'
       consumes 'application/json'
+      security [CSRFToken: []]
       parameter in: :body, name: :body, schema: {
         type: :object,
         properties: {
@@ -135,7 +141,7 @@ describe('Cart API') do
       }
       let(:body) { @body }
 
-      response '200', 'Add product to cart' do
+      response '200', 'Success' do
         it ',add new product to cart' do |example|
           @body = { product_id: ust.id, quantity: 3 }
           submit_request(example.metadata)
@@ -178,6 +184,7 @@ describe('Cart API') do
     delete 'remove product from cart' do
       tags 'Cart'
       consumes 'application/json'
+      security [CSRFToken: []]
       parameter in: :body, name: :body, schema: {
         type: :object,
         properties: {

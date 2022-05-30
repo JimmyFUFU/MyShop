@@ -5,10 +5,14 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.orders.order(created_at: :desc)
+    render(json: { success: true }.merge(orders: @orders.as_json)) if request.format.json?
   end
 
   def show
-    @order = current_user.orders.find_by(token: params[:token])
+    @order = current_user.orders.find_by!(token: params[:token])
+    render(json: { success: true }.merge(@order.as_json(methods: :order_items))) if request.format.json?
+  rescue ActiveRecord::RecordNotFound => _e
+    render(json: { success: false, error: 'Order Not Found' }, status: :unprocessable_entity)
   end
 
   def create
