@@ -1,0 +1,373 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/cart.json": {
+      "get": {
+        "summary": "show cart",
+        "tags": [
+          "Cart"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "CSRFToken": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get cart content",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "id": 18,
+                  "token": "4b6d91fe-ccb2-4d15-820f-8d563dabc635",
+                  "items": [
+                    {
+                      "id": 34,
+                      "name": "Decred",
+                      "price": "1.11",
+                      "quantity": 3
+                    },
+                    {
+                      "id": 35,
+                      "name": "Monero",
+                      "price": "8.27",
+                      "quantity": 1
+                    }
+                  ],
+                  "total_price": "11.6"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorized_body"
+            }
+          }
+        }
+      }
+    },
+    "/cart/{cart_token}.json": {
+      "get": {
+        "summary": "show cart",
+        "tags": [
+          "Cart"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "CSRFToken": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cart_token",
+            "type": "string",
+            "required": true,
+            "description": "Cart Token."
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorized_body"
+            }
+          },
+          "200": {
+            "description": "Get cart content",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "id": 18,
+                  "token": "4b6d91fe-ccb2-4d15-820f-8d563dabc635",
+                  "items": [
+                    {
+                      "id": 34,
+                      "name": "Decred",
+                      "price": "1.11",
+                      "quantity": 3
+                    },
+                    {
+                      "id": 35,
+                      "name": "Monero",
+                      "price": "8.27",
+                      "quantity": 1
+                    }
+                  ],
+                  "total_price": "11.6"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cart/item.json": {
+      "post": {
+        "summary": "add product to cart",
+        "tags": [
+          "Cart"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "CSRFToken": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "product_id": {
+                  "type": "string",
+                  "example": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "example": 10
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorized_body"
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "422": {
+            "description": "UnprocessableEntity"
+          }
+        }
+      },
+      "delete": {
+        "summary": "remove product from cart",
+        "tags": [
+          "Cart"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "CSRFToken": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "product_id": {
+                  "type": "string",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorized_body"
+            }
+          },
+          "200": {
+            "description": "Remove product from cart"
+          }
+        }
+      }
+    },
+    "/orders.json": {
+      "get": {
+        "summary": "show orders",
+        "tags": [
+          "Order"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "CSRFToken": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "orders": [
+                    {
+                      "id": 8,
+                      "user_id": 1,
+                      "total_price": "3.33",
+                      "token": "17fc18a3-4678-4f6f-824e-2b23cf52cc1c",
+                      "name": "#1653835817",
+                      "created_at": "2022-05-29T22:50:17.018+08:00",
+                      "updated_at": "2022-05-29T22:50:17.018+08:00"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorized_body"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create an order",
+        "tags": [
+          "Order"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "CSRFToken": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Success and Redirect to order page"
+          },
+          "422": {
+            "description": "UnprocessableEntity"
+          }
+        }
+      }
+    },
+    "/orders/{order_token}.json": {
+      "get": {
+        "summary": "show order",
+        "tags": [
+          "Order"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "CSRFToken": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "order_token",
+            "type": "string",
+            "required": true,
+            "description": "Order Token."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "id": 8,
+                  "user_id": 1,
+                  "total_price": "3.33",
+                  "token": "17fc18a3-4678-4f6f-824e-2b23cf52cc1c",
+                  "name": "#1653835817",
+                  "created_at": "2022-05-29T22:50:17.018+08:00",
+                  "updated_at": "2022-05-29T22:50:17.018+08:00",
+                  "order_items": [
+                    {
+                      "id": 8,
+                      "order_id": 8,
+                      "product_id": 34,
+                      "name": "Decred",
+                      "price": "1.11",
+                      "quantity": 3,
+                      "created_at": "2022-05-29T22:50:17.020+08:00",
+                      "updated_at": "2022-05-29T22:50:17.020+08:00"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "UnprocessableEntity"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/unauthorized_body"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "CSRFToken": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-CSRF-Token"
+    }
+  },
+  "definitions": {
+    "unauthorized_body": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "You need to sign in or sign up before continuing."
+        }
+      }
+    }
+  }
+}
