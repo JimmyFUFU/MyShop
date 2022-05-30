@@ -27,7 +27,7 @@ function addToCart(pid) {
       quantity: parseInt($(`div#pid-${pid} input.quantity`).val()),
     }),
     contentType: 'application/json',
-    url: `/carts/item.json`,
+    url: `/cart/item.json`,
     success: function(data) {
       alertify.success(data.message);  
     },

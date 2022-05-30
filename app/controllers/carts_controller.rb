@@ -1,13 +1,14 @@
 class CartsController < ApplicationController
   prepend_before_action :authenticate_user!
+
   def show
     respond_to do |format|
       format.html do
-        redirect_to(cart_token_carts_path(cart_token: current_cart.token)) if current_cart && !params[:cart_token]
+        if params[:cart_token].blank? || current_cart&.token != params[:cart_token]
+          redirect_to(cart_token_cart_path(cart_token: current_cart.token))
+        end
       end
-      format.json do
-        render(json: current_cart.as_json(only: %i[id token], methods: %i[items total_price]))
-      end
+      format.json { render_cart_content }
     end
   end
 
@@ -31,6 +32,16 @@ class CartsController < ApplicationController
   end
 
   private
+
+  def render_cart_content
+    if params[:cart_token].present? && current_cart&.token != params[:cart_token]
+      render_error('Cart token mismatch') { return }
+    else
+      render(
+        json: { success: true }.merge(current_cart.as_json(only: %i[id token], methods: %i[items total_price])),
+      )
+    end
+  end
 
   def product
     @product ||= Product.find(params[:product_id])

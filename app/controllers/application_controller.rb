@@ -25,10 +25,7 @@ class ApplicationController < ActionController::Base
   private
 
   def find_cart
-    redirect_to(carts_path) if params[:cart_token].present? && current_user.cart&.token != params[:cart_token]
-
-    cart = current_user.cart || current_user.build_cart
-    cart.save!
+    cart = current_user.cart || current_user.create_cart
     session[:cart_token] = cart.token
     cart
   end

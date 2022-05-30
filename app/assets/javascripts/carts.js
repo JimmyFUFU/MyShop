@@ -3,7 +3,7 @@ function removeItem(pid) {
     type: 'DELETE',
     data: JSON.stringify({ product_id: pid }),
     contentType: 'application/json',
-    url: `/carts/item.json`,
+    url: `/cart/item.json`,
     success: function(data) {
       $(`#item_${pid}`).hide();
       alertify.success(data.message);
@@ -19,7 +19,7 @@ function cartReload() {
   $.ajax({
     type: 'GET',
     contentType: 'application/json',
-    url: `/carts.json`,
+    url: `/cart.json`,
     success: function(data) {
       $('#total-price').text(data.total_price)
     },

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index]
 
   # Cart
-  resource :carts, only: [] do
+  resource :cart, only: [] do
     get '/', to: 'carts#show'
     get '/:cart_token', to: 'carts#show', as: :cart_token
     post '/item', to: 'carts#add_item'
