@@ -1,0 +1,47 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  EnabledByDefault: true
+  Exclude:
+    - 'spec/**/*'
+
+# This is not enabled by default because it would mark a lot of offenses unnecessarily.
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
+  
+Lint/ConstantResolution:
+  Enabled: false
+
+Lint/NumberConversion:
+  Enabled: false
+  
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/Copyright:
+  Enabled: false
+  AutocorrectNotice: ""
+
