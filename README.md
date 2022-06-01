@@ -1,24 +1,54 @@
-# README
+# Welcome to MyShop 🎉
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**🌐 [Homepage](https://myshop.fujimmy.com/)**
 
-Things you may want to cover:
+Prerequisites
+-------------------------
+* ruby >= 2.6.8
+* rails >= 5.0.7.2
+* sqlite3 >= 3.28.0
 
-* Ruby version
+Install
+-------------------------
+```bash=
+git clone https://github.com/JimmyFUFU/MyShop.git
+cd MyShop
+bundle
+rake db:migrate
+rake db:seed # create products
+```
 
-* System dependencies
+Usage
+-------------------------
+```bash=
+rails s
+```
+visit http://localhost:3000
 
-* Configuration
+Run test
+-------------------------
+```bash=
+rspec
+```
 
-* Database creation
+Api Docs
+-------------------------
+### local
+visit http://localhost:3000/api-docs
+  * Login at [Myshop](http://localhost:3000/)
+  * Choose any api you want and click "Try it out"
+  * Fill with Parameters if required
+  * Click "execute"
+  * Get the response
 
-* Database initialization
+If you edit `spec/integration/*_spec.rb`, please execute `rake rswag:specs:swaggerize` to update api-docs
 
-* How to run the test suite
+### Website 🌐
+visit https://myshop.fujimmy.com/api-docs
+  * Login at [Myshop](https://myshop.fujimmy.com/)
+  * Choose any api you want and click "Try it out"
+  * Fill with Parameters if required
+  * Click "execute"
+  * Get the response
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
