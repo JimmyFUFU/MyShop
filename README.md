@@ -2,6 +2,11 @@
 
 **🌐 [Homepage](https://myshop.fujimmy.com/)**
 
+Database Schema
+-------------------------
+<img width="623" alt="截圖 2022-06-01 下午4 15 29" src="https://user-images.githubusercontent.com/52544446/171359396-95165785-626e-4d10-a2be-942d57d49a91.png">
+
+
 Prerequisites
 -------------------------
 * ruby >= 2.6.8
