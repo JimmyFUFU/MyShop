@@ -54,11 +54,6 @@ describe 'Cart API', skip_forgery_protection: true do
         it ',should get current_cart content' do |example|
         end
       end
-
-      response '401', 'Unauthorized' do
-        schema '$ref': '#/definitions/unauthorized_body'
-        run_test!
-      end
     end
   end
 
