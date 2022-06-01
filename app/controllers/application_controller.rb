@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery
   helper_method :current_cart
   helper_method :current_cart_items
 
